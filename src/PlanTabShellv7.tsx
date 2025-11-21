@@ -4,7 +4,13 @@ import EvaluateTabWithInspection from './evaluate_tab_with_inspection';
 import Evaluate from './Evaluate';
 import GuideTabPreview from './guide_tab_preview';
 import HauseeSelectFormStepByStepPreview from './hausee_select_form_step_by_step_preview';
-import { UserProfile, SignedIn, SignedOut, SignInButton } from '@clerk/clerk-react';
+import {
+  UserProfile,
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignOutButton,             // ⬅️ add this
+} from '@clerk/clerk-react';
 
 
 
@@ -997,21 +1003,19 @@ export default function PlanTabShell() {
 
       {/* LOGOUT BUTTON */}
       <div className="mt-6 flex justify-end">
-        <button
-          className="px-4 h-10 rounded-xl text-sm font-medium text-white"
-          style={{ background: COLORS.coral }}
-          onClick={() => {
-            import("@clerk/clerk-react").then(({ useClerk }) => {
-              useClerk().signOut();
-            });
-          }}
-        >
-          Logout
-        </button>
+        <SignOutButton>
+          <button
+            className="px-4 h-10 rounded-xl text-sm font-medium text-white"
+            style={{ background: COLORS.coral }}
+          >
+            Logout
+          </button>
+        </SignOutButton>
       </div>
     </div>
   </div>
 </SignedIn>
+
 
 
         <SignedOut>
