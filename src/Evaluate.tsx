@@ -1027,52 +1027,7 @@ function EvaluateModule() {
             <CompareView ids={compareIds} />
           )}
 
-                    {/* Browse tab */}
-                    {activeTab==='browse' && (
-            <>
-              <div className="flex items-center justify-between mb-3">
-                <div className="text-2xl font-semibold" style={{ color: COLORS.charcoal }}>Evaluation</div>
-                <button className="h-10 px-4 rounded-xl text-white" style={{ background: COLORS.coral }} onClick={() => setShowAdd(true)}>+ Add a home</button>
-              </div>
-
-              {hint && <div className="mb-2 text-xs" style={{color:COLORS.gray}}>{hint}</div>}
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {homes.map((h) => (
-                  <HomeCard
-                    key={h.id}
-                    home={h}
-                    onOpen={() => setActiveId(h.id)}
-                    onToggleFav={() => setHomes((list) => list.map((x) => (x.id === h.id ? { ...x, fav: !x.fav } : x)))}
-                    isCompared={compareIds.includes(h.id)}
-                    onToggleCompare={(checked)=> toggleCompare(h.id, checked)}
-                  />
-                ))}
-              </div>
-
-              {compareIds.length>0 && (
-                <div className="fixed bottom-3 left-0 right-0 mx-auto max-w-6xl px-4">
-                  <div className="rounded-xl bg-white border p-3 flex items-center justify-between shadow-sm" style={{borderColor:COLORS.lightGray}}>
-                    <div className="text-xs" style={{color:COLORS.charcoal}}>
-                      Selected for compare: {compareIds.length} (max 3)
-                      <span className="ml-2 hidden sm:inline" style={{color:COLORS.gray}}>Swipe left or use the arrow to open Compare</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <button className="h-8 px-3 rounded-lg border text-xs" style={{borderColor:COLORS.lightGray}} onClick={()=> setCompareIds([])}>Clear</button>
-                      <button className="h-8 px-3 rounded-lg text-xs text-white" style={{background:COLORS.coral}} onClick={()=> setActiveTab('compare')}>
-                        Compare ({compareIds.length})
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </>
-          )}
-
-          {/* Compare tab */}
-          {activeTab==='compare' && (
-            <CompareView ids={compareIds} />
-          )}
+                    
 
           {/* Inspection tab – this is the NEW part */}
           {activeTab === 'inspection' && (
